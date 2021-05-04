@@ -9,13 +9,37 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
+	<!--HTML i CSS můžeš kdykoliv měnit podle potřeby!-->
 	<h1>Superkvíz</h1>
 
-	<!-- přidat <div> pro kvíz -->
-	<!-- do něj přidat <div>y pro samotné držení otázky -->
-	<!-- také nezapomenout na <div> pro výsledek a hodnocení -->
+	<!--Tento DIV obaluje celý kvíz, můžeš jej v JS použít jako hlavní element, na který se odkážeš-->
+	<div class="kviz">
+
+		<!--Sem můžeš zapsat pořadí otázky. opět pomocí JS-->
+		<p id="poradi"></p>
+
+		<!--A sem už přijde samotná otázka-->
+		<h2 id="otazka"></h2>
+
+		<!--Toto je ukázka případné struktury - rovnou to nahraď podobnou strukturou reálné otázky pomocí JS-->
+		<div class="obsah">
+			<div class="foto">
+				<img id="obrazek" src="obrazky/snehurka.jpg" alt="Ilustrační obrázek">
+			</div>
+
+			<div id="moznosti">
+				<ul id="odpovedi"></ul>
+			</div>
+		</div>
+
+	</div>
+
+	<!--A nakonci bude tady výsledek - nejdřív vidět není a poté ano. U otázek je to opačně.-->
+	<div class="vysledek">
+		<h2>Tvoje hodnocení</h2>
+		<div id="hodnoceni"></div>
+	</div>
+
 
 	<script src="kviz.js"></script>
 
