@@ -20,16 +20,30 @@ const otazky = [
 ]
 let indexOtazky = 0;
 
+function zmenText() {
+    document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
+    document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
+}
+function zmenObrazek(){
+    let fotoOtazka = document.createElement ('img');
+    fotoOtazka.className = 'obrazek';
+    fotoOtazka.src = otazky[indexOtazky].obrazek;
+    let foto = document.querySelector('.foto');
+    foto.appendChild(fotoOtazka);
+  }
+
+
 function novaOtazka(){
 
     if (indexOtazky < otazky.length){
-        document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
-        document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
+        zmenText();
+        zmenObrazek();
+        
         indexOtazky += 1;
     }
     else {let kviz = document.querySelector('.kviz');
-        let obsah = document.querySelector('.obsah');
-        kviz.removeChild(obsah);
+        let kontejner = document.querySelector('.kontejner');
+        kviz.removeChild(kontejner);
         
         //zobraz vysledek
         let vysledek = document.createElement('div')

@@ -71,17 +71,17 @@ h1 {
 	color: black;
 }
 
-/* .obsah {
+.obsah {
 	display: flex;
 	align-items: center;
-} */
+}
 
 .foto {
 	width: 250px;
 	margin-right: 30px;
 }
 
-#obrazek {
+.obrazek {
 	padding: 5px;
 	width: 100%;
 	height: auto;
