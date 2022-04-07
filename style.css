@@ -32,6 +32,16 @@ h1 {
 	text-align: center;
 	letter-spacing: 5px;
 }
+.novaHra {
+	font-size: 30px;
+	text-align: center;
+	padding: 10px 30px;
+	margin: 0 auto;
+	color: white;
+	background-color: #ffb199;
+	text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			
+}
 
 .kviz,
 .vysledek {

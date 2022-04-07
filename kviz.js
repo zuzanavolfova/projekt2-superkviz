@@ -18,15 +18,28 @@ const otazky = [
     indexOdpovedi: 0,
 }
 ]
+let poradiOtazky = 0;
+let indexOtazky = -1;
 
-let poradiOtazky=1;
-document.querySelector('#poradiOtazky').textContent = poradiOtazky;
+function novaOtazka(){
 
-
-
-
-function vyberOtazky(){
-// zobrazit novou otazku}
 //pricist 1 k poradi otazky
-poradiOtazky+= 1;
+// poradiOtazky+= 1;
+poradiOtazky += 1;
+indexOtazky += 1;
+
+
+document.querySelector('#poradiOtazky').textContent = " "+ poradiOtazky;
+document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
+
+//kdyz je poradi otazky vetsi nez 3 zobraz vysledky
+if (poradiOtazky===3){
+    let kviz = document.querySelector('.kviz');
+    let obsah = document.querySelector('.obsah');
+    kviz.removeChild(obsah);
+let vysledek = document.querySelector('.kviz');
+kviz.appendChild(vysledek);
 }
+
+}
+
