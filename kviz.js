@@ -18,28 +18,31 @@ const otazky = [
     indexOdpovedi: 0,
 }
 ]
-let poradiOtazky = 0;
-let indexOtazky = -1;
+let indexOtazky = 0;
 
 function novaOtazka(){
 
-//pricist 1 k poradi otazky
-// poradiOtazky+= 1;
-poradiOtazky += 1;
-indexOtazky += 1;
+    //pricist 1 k poradi otazky
 
 
-document.querySelector('#poradiOtazky').textContent = " "+ poradiOtazky;
-document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
+   
 
-//kdyz je poradi otazky vetsi nez 3 zobraz vysledky
-if (poradiOtazky===3){
-    let kviz = document.querySelector('.kviz');
-    let obsah = document.querySelector('.obsah');
-    kviz.removeChild(obsah);
-let vysledek = document.querySelector('.kviz');
-kviz.appendChild(vysledek);
-}
-
+    //kdyz je poradi otazky vetsi nez 3 zobraz vysledky
+    if (indexOtazky === otazky.length){
+        let kviz = document.querySelector('.kviz');
+        let obsah = document.querySelector('.obsah');
+        kviz.removeChild(obsah);
+        
+        //zobraz vysledek
+        let vysledek = document.createElement('div')
+        kviz.appendChild(vysledek);
+        vysledek.innerHTML = 'pokus';
+        // jmenoZvirete.className = 'jmeno'
+    }
+    else {
+        document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
+        document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
+        indexOtazky += 1;
+    }
 }
 
