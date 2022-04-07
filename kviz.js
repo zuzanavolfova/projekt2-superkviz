@@ -25,10 +25,12 @@ function zmenText() {
     document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
 }
 function zmenObrazek(){
-    let fotoOtazka = document.createElement ('img');
+    let foto = document.querySelector('.foto');
+  
+    //pridani obrazku
+    fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
-    let foto = document.querySelector('.foto');
     foto.appendChild(fotoOtazka);
   }
 
