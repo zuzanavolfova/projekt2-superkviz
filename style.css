@@ -91,7 +91,8 @@ h1 {
 
 #moznosti {
 	flex: 1;
-}
+	display: none;
+	}
 
 #odpovedi {
 	margin: 0;

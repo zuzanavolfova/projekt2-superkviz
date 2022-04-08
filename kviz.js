@@ -19,28 +19,37 @@ const otazky = [
 }
 ]
 let indexOtazky = 0;
+let foto = document.querySelector('.foto');
 
 function zmenText() {
     document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
     document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
 }
-function zmenObrazek(){
-    let foto = document.querySelector('.foto');
-  
-    //pridani obrazku
+
+function zacniHru () {
     fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
+    let moznosti = document.querySelector('#moznosti');
+    moznosti.style.display= "block";
+    zmenText();
+    novaOtazka();
+}
+
+function zmenObrazek(){
+    fotoOtazka.src = otazky[indexOtazky].obrazek;
   }
 
+function zmenOdpovedi(){
+
+}
 
 function novaOtazka(){
-
     if (indexOtazky < otazky.length){
         zmenText();
         zmenObrazek();
-        
+        zmenOdpovedi();
         indexOtazky += 1;
     }
     else {let kviz = document.querySelector('.kviz');
