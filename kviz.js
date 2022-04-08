@@ -32,31 +32,34 @@ function zmenObrazek(){
 }
 
 function zmenOdpovedi(){
-    if (indexOdpoved < otazky[indexOtazky].odpoved[indexOdpoved].length);
+    // if (indexOdpoved < otazky[indexOtazky].odpoved[indexOdpoved].length) {
     let otazka = document.createElement ('li');
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     let seznamOtazek = document.querySelector('ul');
     seznamOtazek.appendChild(otazka);
+    indexOdpoved+=1;
 }
 
 function zacniHru () {
+    zmenText();
     fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
     // let moznosti = document.querySelector('#moznosti');
     // moznosti.style.display= "block";
-    zmenText();
-    zmenOdpovedi();
+    otazky.forEach(zmenOdpovedi);
+    indexOtazky += 1;
    }
 
 function novaOtazka(){
     if (indexOtazky < otazky.length){
         zmenText();
         zmenObrazek();
-        zmenOdpovedi();
+        indexOdpoved = 0;
+        otazky.forEach(zmenOdpovedi);
         indexOtazky += 1;
-        indexOdpoved+=1;
+        
     }
     else {let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
