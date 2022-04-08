@@ -32,11 +32,11 @@ function zmenObrazek(){
 }
 
 function zmenOdpovedi(){
-    // if (indexOdpoved < otazky[indexOtazky].odpoved[indexOdpoved].length) {
     let otazka = document.createElement ('li');
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     let seznamOtazek = document.querySelector('ul');
     seznamOtazek.appendChild(otazka);
+    otazka.onclick= novaOtazka;
     indexOdpoved+=1;
 }
 
@@ -46,9 +46,8 @@ function zacniHru () {
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
-    // let moznosti = document.querySelector('#moznosti');
-    // moznosti.style.display= "block";
     otazky.forEach(zmenOdpovedi);
+    let dalsiOtazka = document.createEvent
     indexOtazky += 1;
    }
 
@@ -56,6 +55,13 @@ function novaOtazka(){
     if (indexOtazky < otazky.length){
         zmenText();
         zmenObrazek();
+        //vymazat vsechny li
+        for (let i = 0; i < otazky[indexOtazky].odpoved.length; i +=1){
+            let seznamOdpovedi = document.querySelector('#odpovedi');
+            let textOdpovedi = document.querySelector('li');
+            seznamOdpovedi.removeChild(textOdpovedi);            
+        }
+
         indexOdpoved = 0;
         otazky.forEach(zmenOdpovedi);
         indexOtazky += 1;
