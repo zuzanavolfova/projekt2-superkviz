@@ -1,4 +1,4 @@
-# README #
+# README
 
 Czechitas Javascript 1 - Projekt zadaný na Lekci 7. Kvíz, ve kterém musíš odpovědět na sadu otázek.
 
@@ -7,9 +7,9 @@ SUPERKVÍZ - cílem je naprogramovat klasický kvíz. Tj. uživatelce se postupn
 Při vytváření HTML pro odpovědi dodrž následující strukturu:
 
 <ul id="odpovedi">
-    <li data-odpoved="0">Ledová královna</li>
+    <!-- <li data-odpoved="0">Ledová královna</li>
     <li data-odpoved="1">Sněhurka</li>
-    <li data-odpoved="2">Já, já jsem nejkrásnější!</li>
+    <li data-odpoved="2">Já, já jsem nejkrásnější!</li> -->
 </ul>
 
 Takto připravené HTML pak pokaždé vlož na stránce do <div id="moznosti">

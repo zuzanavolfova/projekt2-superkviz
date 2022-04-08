@@ -19,6 +19,7 @@ const otazky = [
 }
 ]
 let indexOtazky = 0;
+let indexOdpoved = 0;
 let foto = document.querySelector('.foto');
 
 function zmenText() {
@@ -26,24 +27,28 @@ function zmenText() {
     document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
 }
 
+function zmenObrazek(){
+    fotoOtazka.src = otazky[indexOtazky].obrazek;
+}
+
+function zmenOdpovedi(){
+    if (indexOdpoved < otazky[indexOtazky].odpoved[indexOdpoved].length);
+    let otazka = document.createElement ('li');
+    otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
+    let seznamOtazek = document.querySelector('ul');
+    seznamOtazek.appendChild(otazka);
+}
+
 function zacniHru () {
     fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
-    let moznosti = document.querySelector('#moznosti');
-    moznosti.style.display= "block";
+    // let moznosti = document.querySelector('#moznosti');
+    // moznosti.style.display= "block";
     zmenText();
-    novaOtazka();
-}
-
-function zmenObrazek(){
-    fotoOtazka.src = otazky[indexOtazky].obrazek;
-  }
-
-function zmenOdpovedi(){
-
-}
+    zmenOdpovedi();
+   }
 
 function novaOtazka(){
     if (indexOtazky < otazky.length){
@@ -51,6 +56,7 @@ function novaOtazka(){
         zmenObrazek();
         zmenOdpovedi();
         indexOtazky += 1;
+        indexOdpoved+=1;
     }
     else {let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
