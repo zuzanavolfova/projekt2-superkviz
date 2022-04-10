@@ -21,6 +21,7 @@ const otazky = [
 let indexOtazky = 0;
 let indexOdpoved = 0;
 let foto = document.querySelector('.foto');
+let seznamOtazek = document.querySelector('ul');
 
 function zmenText() {
     document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
@@ -34,7 +35,7 @@ function zmenObrazek(){
 function zmenOdpovedi(){
     let otazka = document.createElement ('li');
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
-    let seznamOtazek = document.querySelector('ul');
+    
     seznamOtazek.appendChild(otazka);
     otazka.onclick= novaOtazka;
     indexOdpoved+=1;
@@ -47,7 +48,8 @@ function zacniHru () {
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
     otazky.forEach(zmenOdpovedi);
-    let dalsiOtazka = document.createEvent
+    let novaHra=document.querySelector('.novaHra');
+    novaHra.style.display='none';
     indexOtazky += 1;
    }
 
@@ -57,11 +59,9 @@ function novaOtazka(){
         zmenObrazek();
         //vymazat vsechny li
         for (let i = 0; i < otazky[indexOtazky].odpoved.length; i +=1){
-            let seznamOdpovedi = document.querySelector('#odpovedi');
             let textOdpovedi = document.querySelector('li');
-            seznamOdpovedi.removeChild(textOdpovedi);            
+            seznamOtazek.removeChild(textOdpovedi);            
         }
-
         indexOdpoved = 0;
         otazky.forEach(zmenOdpovedi);
         indexOtazky += 1;
@@ -75,7 +75,6 @@ function novaOtazka(){
         let vysledek = document.createElement('div')
         kviz.appendChild(vysledek);
         vysledek.innerHTML = 'pokus';
-        // jmenoZvirete.className = 'jmeno'
         
     }
 }
