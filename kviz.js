@@ -18,8 +18,12 @@ const otazky = [
     indexOdpovedi: 0,
 }
 ]
+
+
 let indexOtazky = 0;
 let indexOdpoved = 0;
+let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
+
 let foto = document.querySelector('.foto');
 let seznamOtazek = document.querySelector('ul');
 
@@ -42,8 +46,10 @@ function zmenOdpovedi(){
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     seznamOtazek.appendChild(otazka);
     otazka.onclick= novaOtazka;
+
     otazka.getAttribute('data-odpoved');
     otazka.setAttribute('data-odpoved', indexOdpoved);
+   
     indexOdpoved+=1;
 }
 
@@ -65,26 +71,33 @@ function zacniHru () {
 
 
 function vypisOdpovedi () {
-        let odpovedText = document.createElement ('h2');
-        vysledek.appendChild(odpovedText);
-        odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
-        
-        let tvojeOdpovedText = document.createElement ('p');
-        vysledek.appendChild(tvojeOdpovedText);
-        tvojeOdpovedText.className='vysledekText';
-        tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
-        
-        let spravnaOdpovedText = document.createElement ('p');
-        vysledek.appendChild(spravnaOdpovedText);
-        spravnaOdpovedText.className='vysledekText';
+    let odpovedText = document.createElement ('h2');
+    vysledek.appendChild(odpovedText);
+    odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+    
+    let tvojeOdpovedText = document.createElement ('p');
+    vysledek.appendChild(tvojeOdpovedText);
+    tvojeOdpovedText.className='vysledekText';
+    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
+    
+    let spravnaOdpovedText = document.createElement ('p');
+    vysledek.appendChild(spravnaOdpovedText);
+    spravnaOdpovedText.className='vysledekText';
 
-        //vypis spravne odpovedi
-        // if (otazky[indexOtazky].odpoved = indexOdpovedi) {
-        //     spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
-        // } ;
+    //vypis spravne odpovedi /
+    // pokud se index oznacene odpovedi = indexu odpovedi
+    // => napis 'to je spravne ` 
 
-        indexOtazky += 1;
-        }
+    if (indexOdpovedi>100) {
+            spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+    } else {
+        spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
+            + otazky[indexOtazky].odpoved[indexOdpovedi];
+    }
+    ;
+
+    indexOtazky += 1;
+    }
 
 function novaOtazka(){
     if (indexOtazky < otazky.length){       
@@ -122,8 +135,4 @@ function novaOtazka(){
         
     }
 }
-
-// function spravnaOdpoved () {
-
-// }
  
