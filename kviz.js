@@ -80,6 +80,7 @@ function novaOtazka(){
         indexOdpoved = 0;
       
         otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
+        //pridat pocitadlo
         indexOtazky += 1;
         
     }
