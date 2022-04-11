@@ -19,7 +19,6 @@ const otazky = [
 }
 ]
 
-
 let indexOtazky = 0;
 let indexOdpoved = 0;
 let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
@@ -69,36 +68,6 @@ function zacniHru () {
     indexOtazky++;
    }
 
-
-function vypisOdpovedi () {
-    let odpovedText = document.createElement ('h2');
-    vysledek.appendChild(odpovedText);
-    odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
-    
-    let tvojeOdpovedText = document.createElement ('p');
-    vysledek.appendChild(tvojeOdpovedText);
-    tvojeOdpovedText.className='vysledekText';
-    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
-    
-    let spravnaOdpovedText = document.createElement ('p');
-    vysledek.appendChild(spravnaOdpovedText);
-    spravnaOdpovedText.className='vysledekText';
-
-    //vypis spravne odpovedi /
-    // pokud se index oznacene odpovedi = indexu odpovedi
-    // => napis 'to je spravne ` 
-
-    if (indexOdpovedi>100) {
-            spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
-    } else {
-        spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
-            + otazky[indexOtazky].odpoved[indexOdpovedi];
-    }
-    ;
-
-    indexOtazky += 1;
-    }
-
 function novaOtazka(){
     if (indexOtazky < otazky.length){       
         zmenText();
@@ -135,4 +104,34 @@ function novaOtazka(){
         
     }
 }
- 
+
+function vypisOdpovedi () {
+    let odpovedText = document.createElement ('h2');
+    vysledek.appendChild(odpovedText);
+    odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+    
+    let tvojeOdpovedText = document.createElement ('p');
+    vysledek.appendChild(tvojeOdpovedText);
+    tvojeOdpovedText.className='vysledekText';
+    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
+    
+    let spravnaOdpovedText = document.createElement ('p');
+    vysledek.appendChild(spravnaOdpovedText);
+    spravnaOdpovedText.className='vysledekText';
+
+    pocitaniOdpovedi();
+
+    indexOtazky += 1;
+}
+
+//vypis spravne odpovedi /
+        // pokud se index oznacene odpovedi = indexu odpovedi
+        // => napis 'to je spravne ` 
+function pocitaniOdpovedi(){
+    if (indexOdpovedi>100) {
+            spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+    } else {
+        spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
+            + otazky[indexOtazky].odpoved[indexOdpovedi];
+    };
+}
