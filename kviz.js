@@ -42,6 +42,8 @@ function zmenOdpovedi(){
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     seznamOtazek.appendChild(otazka);
     otazka.onclick= novaOtazka;
+    otazka.getAttribute('data-odpoved');
+    otazka.setAttribute('data-odpoved', indexOdpoved);
     indexOdpoved+=1;
 }
 
@@ -64,22 +66,25 @@ function zacniHru () {
 
 function vypisOdpovedi () {
         let odpovedText = document.createElement ('h2');
-            vysledek.appendChild(odpovedText);
-            odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
-            
-            let tvojeOdpovedText = document.createElement ('p');
-            vysledek.appendChild(tvojeOdpovedText);
-            tvojeOdpovedText.className='vysledekText';
-            tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
-            
-            let spravnaOdpovedText = document.createElement ('p');
-            vysledek.appendChild(spravnaOdpovedText);
-            spravnaOdpovedText.className='vysledekText';
+        vysledek.appendChild(odpovedText);
+        odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+        
+        let tvojeOdpovedText = document.createElement ('p');
+        vysledek.appendChild(tvojeOdpovedText);
+        tvojeOdpovedText.className='vysledekText';
+        tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
+        
+        let spravnaOdpovedText = document.createElement ('p');
+        vysledek.appendChild(spravnaOdpovedText);
+        spravnaOdpovedText.className='vysledekText';
 
-            // spravnaOdpoved();
+        //vypis spravne odpovedi
+        // if (otazky[indexOtazky].odpoved = indexOdpovedi) {
+        //     spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+        // } ;
 
-            indexOtazky += 1;
-            }
+        indexOtazky += 1;
+        }
 
 function novaOtazka(){
     if (indexOtazky < otazky.length){       
