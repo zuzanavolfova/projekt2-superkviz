@@ -30,6 +30,7 @@ let spravne = 0; //pomocna promenna pro stylovani
 let procentaUspesnost = 100; //pomocna promenna pro stylovani 
 let tvojeOdpoved= 'pomocny padouch'; //pomocna promenna pro stylovani 
 let vysledek
+let spravnaOdpovedText
 
 function zmenText() {
     document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
@@ -44,7 +45,9 @@ function zmenOdpovedi(){
     let otazka = document.createElement ('li');
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     seznamOtazek.appendChild(otazka);
-    otazka.onclick= novaOtazka;
+   
+    otazka.addEventListener('click', novaOtazka);
+ 
 
     otazka.getAttribute('data-odpoved');
     otazka.setAttribute('data-odpoved', indexOdpoved);
@@ -115,7 +118,7 @@ function vypisOdpovedi () {
     tvojeOdpovedText.className='vysledekText';
     tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
     
-    let spravnaOdpovedText = document.createElement ('p');
+    spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
     spravnaOdpovedText.className='vysledekText';
 
