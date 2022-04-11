@@ -52,6 +52,7 @@ function zacniHru () {
     indexOtazky += 1;
    }
 
+
 function novaOtazka(){
     if (indexOtazky < otazky.length){       
         zmenText();
@@ -67,6 +68,8 @@ function novaOtazka(){
     else {let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
         kviz.removeChild(kontejner);
+
+        indexOtazky = 0;
         
         let spravne = 0; //pomocna promenna pro stylovani 
         let procentaUspesnost = 100; //pomocna promenna pro stylovani 
@@ -79,20 +82,17 @@ function novaOtazka(){
         vysledek.appendChild(nadpis);
         nadpis.className='nadpisVysledek';
         nadpis.innerHTML = 'Tvoje hodnocení';
-        
-        let odpovedPrvni = document.createElement ('h2');
-        vysledek.appendChild(odpovedPrvni);
-        odpovedPrvni.innerHTML = '1. ' + otazky[0].kvizOtazka;
-        
-        
-        let odpovedDruha = document.createElement ('h2');
-        vysledek.appendChild(odpovedDruha);
-        odpovedDruha.innerHTML = '1. ' + otazky[1].kvizOtazka;
-        
-        let odpovedTreti = document.createElement ('h2');
-        vysledek.appendChild(odpovedTreti);
-        odpovedTreti.innerHTML = '1. ' + otazky[2].kvizOtazka;
-        
+
+        otazky.forEach(vypisOdpovedi);
+      
+        function vypisOdpovedi () {
+            let odpovedText = document.createElement ('h2');
+            vysledek.appendChild(odpovedText);
+            odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+            indexOtazky += 1;
+        }
+      
+
         let vysledekProcenta = document.createElement ('h1');
         vysledek.appendChild(vysledekProcenta);
         vysledekProcenta.className='nadpisVysledek';
