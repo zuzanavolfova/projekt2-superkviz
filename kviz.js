@@ -56,8 +56,8 @@ function novaOtazka(){
     if (indexOtazky < otazky.length){       
         zmenText();
         zmenObrazek();
-        //vymazat vsechny li
-        document.querySelector('ul').removeChild(document.querySelectorAll('li'));
+        //vymazat vsechny li - nefunguje
+        // document.querySelector('ul').removeChild(document.querySelectorAll('li'));
         indexOdpoved = 0;
       
         otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
@@ -68,10 +68,35 @@ function novaOtazka(){
         let kontejner = document.querySelector('.kontejner');
         kviz.removeChild(kontejner);
         
+        let spravne = 0; //pomocna promenna pro stylovani 
+        let procentaUspesnost = 100; //pomocna promenna pro stylovani 
+
         //zobraz vysledek
-        let vysledek = document.createElement('div')
+        let vysledek = document.createElement ('div');
         kviz.appendChild(vysledek);
-        vysledek.innerHTML = 'pokus';
+        
+        let nadpis = document.createElement ('h1');
+        vysledek.appendChild(nadpis);
+        nadpis.className='nadpisVysledek';
+        nadpis.innerHTML = 'Tvoje hodnocení';
+        
+        let odpovedPrvni = document.createElement ('h2');
+        vysledek.appendChild(odpovedPrvni);
+        odpovedPrvni.innerHTML = '1. ' + otazky[0].kvizOtazka;
+        
+        
+        let odpovedDruha = document.createElement ('h2');
+        vysledek.appendChild(odpovedDruha);
+        odpovedDruha.innerHTML = '1. ' + otazky[1].kvizOtazka;
+        
+        let odpovedTreti = document.createElement ('h2');
+        vysledek.appendChild(odpovedTreti);
+        odpovedTreti.innerHTML = '1. ' + otazky[2].kvizOtazka;
+        
+        let vysledekProcenta = document.createElement ('h1');
+        vysledek.appendChild(vysledekProcenta);
+        vysledekProcenta.className='nadpisVysledek';
+        vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
         
     }
 }
