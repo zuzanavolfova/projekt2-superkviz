@@ -23,6 +23,11 @@ let indexOdpoved = 0;
 let foto = document.querySelector('.foto');
 let seznamOtazek = document.querySelector('ul');
 
+let spravne = 0; //pomocna promenna pro stylovani 
+let procentaUspesnost = 100; //pomocna promenna pro stylovani 
+let tvojeOdpoved= 'pomocny padouch'; //pomocna promenna pro stylovani 
+let vysledek
+
 function zmenText() {
     document.querySelector('#poradiOtazky').textContent = " "+ (indexOtazky+1);
     document.querySelector('#otazka').textContent = otazky[indexOtazky].kvizOtazka;
@@ -42,16 +47,39 @@ function zmenOdpovedi(){
 
 function zacniHru () {
     zmenText();
+
     fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
+    
     otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
+   
     let novaHra=document.querySelector('.novaHra');
     novaHra.style.display='none';
-    indexOtazky += 1;
+   
+    indexOtazky++;
    }
 
+
+function vypisOdpovedi () {
+        let odpovedText = document.createElement ('h2');
+            vysledek.appendChild(odpovedText);
+            odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+            
+            let tvojeOdpovedText = document.createElement ('p');
+            vysledek.appendChild(tvojeOdpovedText);
+            tvojeOdpovedText.className='vysledekText';
+            tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
+            
+            let spravnaOdpovedText = document.createElement ('p');
+            vysledek.appendChild(spravnaOdpovedText);
+            spravnaOdpovedText.className='vysledekText';
+
+            // spravnaOdpoved();
+
+            indexOtazky += 1;
+            }
 
 function novaOtazka(){
     if (indexOtazky < otazky.length){       
@@ -70,12 +98,9 @@ function novaOtazka(){
         kviz.removeChild(kontejner);
 
         indexOtazky = 0;
-        
-        let spravne = 0; //pomocna promenna pro stylovani 
-        let procentaUspesnost = 100; //pomocna promenna pro stylovani 
-
+              
         //zobraz vysledek
-        let vysledek = document.createElement ('div');
+        vysledek = document.createElement ('div');
         kviz.appendChild(vysledek);
         
         let nadpis = document.createElement ('h1');
@@ -84,14 +109,6 @@ function novaOtazka(){
         nadpis.innerHTML = 'Tvoje hodnocení';
 
         otazky.forEach(vypisOdpovedi);
-      
-        function vypisOdpovedi () {
-            let odpovedText = document.createElement ('h2');
-            vysledek.appendChild(odpovedText);
-            odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
-            indexOtazky += 1;
-        }
-      
 
         let vysledekProcenta = document.createElement ('h1');
         vysledek.appendChild(vysledekProcenta);
@@ -101,3 +118,7 @@ function novaOtazka(){
     }
 }
 
+// function spravnaOdpoved () {
+
+// }
+ 
