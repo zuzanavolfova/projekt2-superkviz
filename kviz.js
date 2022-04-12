@@ -128,7 +128,8 @@ function novaOtazka(kliknutaOdpoved){
         vysledek.appendChild(vysledekProcenta);
         vysledekProcenta.className='nadpisVysledek';
         procentaUspesnost = Math.round(100*spravne/otazky.length);
-        vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
+        vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze '
+            + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
     }
 }
 
@@ -137,24 +138,27 @@ function vypisOdpovedi () {
 
     let odpovedText = document.createElement ('h2');
     vysledek.appendChild(odpovedText);
-    odpovedText.innerHTML = (indexOtazky+1) + '. ' + otazky[indexOtazky].kvizOtazka;
+    odpovedText.innerHTML = (indexOtazky+1) + '. ' 
+        + otazky[indexOtazky].kvizOtazka;
     
     let tvojeOdpovedText = document.createElement ('p');
     vysledek.appendChild(tvojeOdpovedText);
     tvojeOdpovedText.className='vysledekText';
-    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + otazky[indexOtazky].odpoved[tvojeOdpovedi[tvojeOdpovediIndex]];
+    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: '
+        + otazky[indexOtazky].odpoved[tvojeOdpovedi[tvojeOdpovediIndex]];
     
     let spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
     spravnaOdpovedText.className='vysledekText';
+    
     //zjistuju, jestli je odpoved spravna a
     // podle toho vypisuju hlasku a pripadne scitam spravne odpovedi
     if (otazky[indexOtazky].indexOdpovedi==tvojeOdpovedi[tvojeOdpovediIndex]) {
-    spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
-    spravne++;
+        spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+        spravne++;
     } else {
-    spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
-    + otazky[indexOtazky].odpoved[i];
+        spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
+        + otazky[indexOtazky].odpoved[i];
     };
     indexOtazky ++;
     tvojeOdpovediIndex++;   
