@@ -24,6 +24,7 @@ let tvojeOdpovediIndex = 0;
 
 let indexOtazky = 0;
 let indexOdpoved = 0;
+//tady je ta chyba
 let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
 
 let foto = document.querySelector('.foto');
