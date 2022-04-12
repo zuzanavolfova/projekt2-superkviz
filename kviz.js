@@ -24,7 +24,6 @@ let tvojeOdpovediIndex = 0;
 
 let indexOtazky = 0;
 let indexOdpoved = 0;
-//tady je ta chyba
 
 let foto = document.querySelector('.foto');
 let seznamOtazek = document.querySelector('ul');
@@ -134,7 +133,7 @@ function novaOtazka(kliknutaOdpoved){
 }
 
 function vypisOdpovedi () {
-    let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
+    let i = otazky[indexOtazky].indexOdpovedi;
 
     let odpovedText = document.createElement ('h2');
     vysledek.appendChild(odpovedText);
@@ -155,7 +154,7 @@ function vypisOdpovedi () {
     spravne++;
     } else {
     spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
-    + otazky[indexOtazky].odpoved[indexOdpovedi];
+    + otazky[indexOtazky].odpoved[i];
     };
     indexOtazky ++;
     tvojeOdpovediIndex++;   
