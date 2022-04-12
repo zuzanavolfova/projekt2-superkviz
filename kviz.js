@@ -29,10 +29,9 @@ let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
 let foto = document.querySelector('.foto');
 let seznamOtazek = document.querySelector('ul');
 
-let spravne = 0; //pomocna promenna pro stylovani 
-let procentaUspesnost = 0; //pomocna promenna pro stylovani 
+let spravne = 0; 
+let procentaUspesnost = 0; 
 let tvojeOdpoved
-// = 'pomocny padouch'; //pomocna promenna pro stylovani 
 let vysledek
 let spravnaOdpovedText
 
@@ -96,7 +95,6 @@ function novaOtazka(kliknutaOdpoved){
         
         //prictu 1 k indexu abych mohla pracovat s dalsim indexem v poli
         indexOtazky++;
-        
         zmenText();
         zmenObrazek();
         
@@ -113,6 +111,7 @@ function novaOtazka(kliknutaOdpoved){
         kviz.removeChild(kontejner);
 
         //zobraz vysledek
+        //indexOtazky nastavim na 0, abych zacala od zazatku
         indexOtazky = 0;
         vysledek = document.createElement ('div');
         kviz.appendChild(vysledek);
@@ -124,13 +123,13 @@ function novaOtazka(kliknutaOdpoved){
         
         //vypise sekci pro kazdou odpoved
         otazky.forEach(vypisOdpovedi);
-
+        
+        //vypocita a vypise uspesnost
         let vysledekProcenta = document.createElement ('h1');
         vysledek.appendChild(vysledekProcenta);
         vysledekProcenta.className='nadpisVysledek';
         procentaUspesnost = Math.round(100*spravne/otazky.length);
         vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
-        
     }
 }
 
@@ -147,12 +146,8 @@ function vypisOdpovedi () {
     let spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
     spravnaOdpovedText.className='vysledekText';
-
-    // console.log(otazky[indexOtazky].indexOdpovedi);
-    // console.log(tvojeOdpovedi[tvojeOdpovediIndex]);
-    // console.log(otazky[indexOtazky].odpoved[indexOdpovedi]);
-    // console.log(otazky[indexOtazky].indexOdpovedi);
-
+    //zjistuju, jestli je odpoved spravna a
+    // podle toho vypisuju hlasku a pripadne scitam spravne odpovedi
     if (otazky[indexOtazky].indexOdpovedi==tvojeOdpovedi[tvojeOdpovediIndex]) {
     spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
     spravne++;
@@ -161,8 +156,5 @@ function vypisOdpovedi () {
     + otazky[indexOtazky].odpoved[indexOdpovedi];
     };
     indexOtazky ++;
-    tvojeOdpovediIndex++;
-
-
-    
+    tvojeOdpovediIndex++;   
 }
