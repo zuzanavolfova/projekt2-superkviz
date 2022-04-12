@@ -80,6 +80,9 @@ function zacniHru () {
     }
 
 function novaOtazka(kliknutaOdpoved){
+    //ulozi odpoved do pole  
+    tvojeOdpovedi.push(kliknutaOdpoved.target.getAttribute('data-odpoved'));
+
     if (indexOtazky < (otazky.length-1)){       
        // vymazu predchozi seznam
         let li =document.querySelectorAll('li');
@@ -93,10 +96,7 @@ function novaOtazka(kliknutaOdpoved){
         
         //prictu 1 k indexu abych mohla pracovat s dalsim indexem v poli
         indexOtazky++;
-        console.log(kliknutaOdpoved.target.getAttribute('data-odpoved'));
-        tvojeOdpovedi.push(kliknutaOdpoved.target.getAttribute('data-odpoved'));
-
-
+        
         zmenText();
         zmenObrazek();
         
@@ -104,18 +104,15 @@ function novaOtazka(kliknutaOdpoved){
         
         //vygeneruju nove odpovedi
         otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
-        
-        //pridat pocitadlo pridat pole s odpovedma+
 
-        // tvojeOdpovedi.push('pomocny padouch');
-    }
-    else {let kviz = document.querySelector('.kviz');
+        }   else {
+        //odstrani kviz
+        let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
         kviz.removeChild(kontejner);
 
-        indexOtazky = 0;
-              
         //zobraz vysledek
+        indexOtazky = 0;
         vysledek = document.createElement ('div');
         kviz.appendChild(vysledek);
         
@@ -123,7 +120,8 @@ function novaOtazka(kliknutaOdpoved){
         vysledek.appendChild(nadpis);
         nadpis.className='nadpisVysledek';
         nadpis.innerHTML = 'Tvoje hodnocení';
-
+        
+        //vypise sekci pro kazdou odpoved
         otazky.forEach(vypisOdpovedi);
 
         let vysledekProcenta = document.createElement ('h1');
@@ -147,19 +145,14 @@ function vypisOdpovedi () {
     spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
     spravnaOdpovedText.className='vysledekText';
-
-    pocitaniOdpovedi();
+    if (otazky[indexOtazky].indexOdpovedi = tvojeOdpovedi[tvojeOdpovediIndex]) {
+        spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+    } else {
+    spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
+        + otazky[indexOtazky].odpoved[indexOdpovedi];
+    };
 
     indexOtazky ++;
     tvojeOdpovediIndex++;
 }
 
-//vypis spravne odpovedi / 
-function pocitaniOdpovedi(){
-    if (otazky.indexOdpovedi === tvojeOdpovedi[tvojeOdpovediIndex]) {
-            spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
-    } else {
-        spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
-            + otazky[indexOtazky].odpoved[indexOdpovedi];
-    };
-}
