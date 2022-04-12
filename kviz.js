@@ -128,7 +128,7 @@ function novaOtazka(kliknutaOdpoved){
         let vysledekProcenta = document.createElement ('h1');
         vysledek.appendChild(vysledekProcenta);
         vysledekProcenta.className='nadpisVysledek';
-        procentaUspesnost = 100*spravne/otazky.length;
+        procentaUspesnost = Math.round(100*spravne/otazky.length);
         vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
         
     }
@@ -153,7 +153,7 @@ function vypisOdpovedi () {
     // console.log(otazky[indexOtazky].odpoved[indexOdpovedi]);
     // console.log(otazky[indexOtazky].indexOdpovedi);
 
-    if (otazky[indexOtazky].indexOdpovedi===tvojeOdpovedi[tvojeOdpovediIndex]) {
+    if (otazky[indexOtazky].indexOdpovedi==tvojeOdpovedi[tvojeOdpovediIndex]) {
     spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
     spravne++;
     } else {
