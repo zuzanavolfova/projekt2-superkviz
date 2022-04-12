@@ -19,7 +19,7 @@ const otazky = [
 }
 ]
 
-let tvojeOdpovedi = [5,6,5];
+let tvojeOdpovedi = [];
 let tvojeOdpovediIndex = 0;
 
 let indexOtazky = 0;
@@ -52,7 +52,6 @@ function zmenOdpovedi(){
     seznamOtazek.appendChild(otazka);
     
     //k otazkam vlozim data
-    otazka.getAttribute('data-odpoved');
     otazka.setAttribute('data-odpoved', indexOdpoved);
     
     //k otazkam vlozim event listener
@@ -80,7 +79,7 @@ function zacniHru () {
     novaHra.style.display='none';
     }
 
-function novaOtazka(){
+function novaOtazka(kliknutaOdpoved){
     if (indexOtazky < (otazky.length-1)){       
        // vymazu predchozi seznam
         let li =document.querySelectorAll('li');
@@ -94,7 +93,10 @@ function novaOtazka(){
         
         //prictu 1 k indexu abych mohla pracovat s dalsim indexem v poli
         indexOtazky++;
-        
+        console.log(kliknutaOdpoved.target.getAttribute('data-odpoved'));
+        tvojeOdpovedi.push(kliknutaOdpoved.target.getAttribute('data-odpoved'));
+
+
         zmenText();
         zmenObrazek();
         
@@ -140,7 +142,7 @@ function vypisOdpovedi () {
     let tvojeOdpovedText = document.createElement ('p');
     vysledek.appendChild(tvojeOdpovedText);
     tvojeOdpovedText.className='vysledekText';
-    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpovedi[tvojeOdpovediIndex];
+    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + otazky[indexOtazky].odpoved[tvojeOdpovedi[tvojeOdpovediIndex]];
     
     spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
