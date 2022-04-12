@@ -150,8 +150,8 @@ function vypisOdpovedi () {
 
     // console.log(otazky[indexOtazky].indexOdpovedi);
     // console.log(tvojeOdpovedi[tvojeOdpovediIndex]);
-    console.log(otazky[indexOtazky].odpoved[indexOdpovedi]);
-    console.log(otazky[indexOtazky].indexOdpovedi);
+    // console.log(otazky[indexOtazky].odpoved[indexOdpovedi]);
+    // console.log(otazky[indexOtazky].indexOdpovedi);
 
     if (otazky[indexOtazky].indexOdpovedi===tvojeOdpovedi[tvojeOdpovediIndex]) {
     spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
@@ -162,6 +162,7 @@ function vypisOdpovedi () {
     };
     indexOtazky ++;
     tvojeOdpovediIndex++;
+
 
     
 }
