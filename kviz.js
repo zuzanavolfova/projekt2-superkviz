@@ -30,7 +30,7 @@ let foto = document.querySelector('.foto');
 let seznamOtazek = document.querySelector('ul');
 
 let spravne = 0; //pomocna promenna pro stylovani 
-let procentaUspesnost = 100; //pomocna promenna pro stylovani 
+let procentaUspesnost = 0; //pomocna promenna pro stylovani 
 let tvojeOdpoved
 // = 'pomocny padouch'; //pomocna promenna pro stylovani 
 let vysledek
@@ -106,6 +106,7 @@ function novaOtazka(kliknutaOdpoved){
         otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
 
         }   else {
+            console.log(tvojeOdpovedi);
         //odstrani kviz
         let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
@@ -127,6 +128,7 @@ function novaOtazka(kliknutaOdpoved){
         let vysledekProcenta = document.createElement ('h1');
         vysledek.appendChild(vysledekProcenta);
         vysledekProcenta.className='nadpisVysledek';
+        procentaUspesnost = 100*spravne/otazky.length;
         vysledekProcenta.innerHTML = 'Spravně ' + spravne + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procentaUspesnost + ' %.';
         
     }
@@ -142,17 +144,24 @@ function vypisOdpovedi () {
     tvojeOdpovedText.className='vysledekText';
     tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + otazky[indexOtazky].odpoved[tvojeOdpovedi[tvojeOdpovediIndex]];
     
-    spravnaOdpovedText = document.createElement ('p');
+    let spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
     spravnaOdpovedText.className='vysledekText';
-    if (otazky[indexOtazky].indexOdpovedi = tvojeOdpovedi[tvojeOdpovediIndex]) {
-        spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+
+    // console.log(otazky[indexOtazky].indexOdpovedi);
+    // console.log(tvojeOdpovedi[tvojeOdpovediIndex]);
+    console.log(otazky[indexOtazky].odpoved[indexOdpovedi]);
+    console.log(otazky[indexOtazky].indexOdpovedi);
+
+    if (otazky[indexOtazky].indexOdpovedi===tvojeOdpovedi[tvojeOdpovediIndex]) {
+    spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
+    spravne++;
     } else {
     spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
-        + otazky[indexOtazky].odpoved[indexOdpovedi];
+    + otazky[indexOtazky].odpoved[indexOdpovedi];
     };
-
     indexOtazky ++;
     tvojeOdpovediIndex++;
-}
 
+    
+}
