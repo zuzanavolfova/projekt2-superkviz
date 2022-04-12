@@ -67,21 +67,29 @@ function zacniHru () {
    
     let novaHra=document.querySelector('.novaHra');
     novaHra.style.display='none';
-   
-    indexOtazky++;
-   }
+    }
 
 function novaOtazka(){
-    if (indexOtazky < otazky.length){       
+    if (indexOtazky < (otazky.length-1)){       
+                 
+        let li =document.querySelectorAll('li');
+        let ul =document.querySelector('ul');
+
+        for (let i = 0; i<otazky[indexOtazky].odpoved.length; i++){
+        ul.removeChild(li[i]);
+        }
+        //proc to nefunguje?
+        // document.querySelector('ul').removeChild(document.querySelectorAll('li'))
+
+        indexOtazky++;
         zmenText();
         zmenObrazek();
-        //vymazat vsechny li - nefunguje
-        // document.querySelector('ul').removeChild(document.querySelectorAll('li'));
+        
         indexOdpoved = 0;
       
         otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
         //pridat pocitadlo
-        indexOtazky += 1;
+        // indexOtazky += 1;
         
     }
     else {let kviz = document.querySelector('.kviz');
