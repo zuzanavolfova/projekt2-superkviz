@@ -19,6 +19,9 @@ const otazky = [
 }
 ]
 
+let tvojeOdpovedi = [5,6,5];
+let tvojeOdpovediIndex = 0;
+
 let indexOtazky = 0;
 let indexOdpoved = 0;
 let indexOdpovedi = otazky[indexOtazky].indexOdpovedi;
@@ -28,7 +31,8 @@ let seznamOtazek = document.querySelector('ul');
 
 let spravne = 0; //pomocna promenna pro stylovani 
 let procentaUspesnost = 100; //pomocna promenna pro stylovani 
-let tvojeOdpoved= 'pomocny padouch'; //pomocna promenna pro stylovani 
+let tvojeOdpoved
+// = 'pomocny padouch'; //pomocna promenna pro stylovani 
 let vysledek
 let spravnaOdpovedText
 
@@ -42,36 +46,43 @@ function zmenObrazek(){
 }
 
 function zmenOdpovedi(){
+    //vytvorim seznam otazek
     let otazka = document.createElement ('li');
     otazka.innerHTML = otazky[indexOtazky].odpoved[indexOdpoved];
     seznamOtazek.appendChild(otazka);
-   
-    otazka.addEventListener('click', novaOtazka);
- 
-
+    
+    //k otazkam vlozim data
     otazka.getAttribute('data-odpoved');
     otazka.setAttribute('data-odpoved', indexOdpoved);
-   
+    
+    //k otazkam vlozim event listener
+    otazka.addEventListener('click', novaOtazka);
+
+    //zmenim index, abych mohla prejit k dalsi otazce
     indexOdpoved+=1;
 }
 
 function zacniHru () {
+    //vypisu otazku
     zmenText();
-
+    
+    //vytvorim element obrazek
     fotoOtazka = document.createElement ('img');
     fotoOtazka.className = 'obrazek';
     fotoOtazka.src = otazky[indexOtazky].obrazek;
     foto.appendChild(fotoOtazka);
     
+    //vygeneruju odpovedi
     otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
    
+    //skruju tlacitko nova hra
     let novaHra=document.querySelector('.novaHra');
     novaHra.style.display='none';
     }
 
 function novaOtazka(){
     if (indexOtazky < (otazky.length-1)){       
-                 
+       // vymazu predchozi seznam
         let li =document.querySelectorAll('li');
         let ul =document.querySelector('ul');
 
@@ -80,17 +91,21 @@ function novaOtazka(){
         }
         //proc to nefunguje?
         // document.querySelector('ul').removeChild(document.querySelectorAll('li'))
-
+        
+        //prictu 1 k indexu abych mohla pracovat s dalsim indexem v poli
         indexOtazky++;
+        
         zmenText();
         zmenObrazek();
         
         indexOdpoved = 0;
-      
-        otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
-        //pridat pocitadlo
-        // indexOtazky += 1;
         
+        //vygeneruju nove odpovedi
+        otazky[indexOtazky].odpoved.forEach(zmenOdpovedi);
+        
+        //pridat pocitadlo pridat pole s odpovedma+
+
+        // tvojeOdpovedi.push('pomocny padouch');
     }
     else {let kviz = document.querySelector('.kviz');
         let kontejner = document.querySelector('.kontejner');
@@ -125,7 +140,7 @@ function vypisOdpovedi () {
     let tvojeOdpovedText = document.createElement ('p');
     vysledek.appendChild(tvojeOdpovedText);
     tvojeOdpovedText.className='vysledekText';
-    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpoved;
+    tvojeOdpovedText.innerHTML = 'Tvoje odpověď: ' + tvojeOdpovedi[tvojeOdpovediIndex];
     
     spravnaOdpovedText = document.createElement ('p');
     vysledek.appendChild(spravnaOdpovedText);
@@ -133,14 +148,13 @@ function vypisOdpovedi () {
 
     pocitaniOdpovedi();
 
-    indexOtazky += 1;
+    indexOtazky ++;
+    tvojeOdpovediIndex++;
 }
 
-//vypis spravne odpovedi /
-        // pokud se index oznacene odpovedi = indexu odpovedi
-        // => napis 'to je spravne ` 
+//vypis spravne odpovedi / 
 function pocitaniOdpovedi(){
-    if (indexOdpovedi>100) {
+    if (otazky.indexOdpovedi === tvojeOdpovedi[tvojeOdpovediIndex]) {
             spravnaOdpovedText.innerHTML = 'To je SPRAVNĚ';
     } else {
         spravnaOdpovedText.innerHTML = 'Spravná odpověď: '
