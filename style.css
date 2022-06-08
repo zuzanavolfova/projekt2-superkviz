@@ -3,9 +3,12 @@
 
 /* nastaveni barev */
 :root {
-	--cervena: #ff0844;
+	--dark: #08605f;
+	--light: #60e1e0;
+	--title: #e0e0e0;
+	/* --cervena: #ff0844;
 	--oranzova: #ffb199;
-	--seda: #e0e0e0;
+	--seda: #e0e0e0; */
 }
 
 html { box-sizing: border-box; }
@@ -16,7 +19,7 @@ body {
 	min-height: 100vh;
 	font-family: 'Nunito', sans-serif;
 	color: white;
-	background-image: linear-gradient(to top, var(--cervena) 0%, var(--oranzova) 100%);
+	background-image: linear-gradient(to top, var(--dark) 0%, var(--light) 100%);
 }
 
 h1, h2, h3 {
@@ -27,7 +30,7 @@ h1, h2, h3 {
 h1 {
 	margin: 30px 0;
 	font-size: 120px;
-	color: white;
+	color: #34435e;
 	text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 	text-align: center;
 	letter-spacing: 5px;
@@ -38,7 +41,7 @@ h1 {
 	padding: 10px 30px;
 	margin: 0 auto;
 	color: white;
-	background-color: #ffb199;
+	background-color: #b88e8d;
 	text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 			
 }
@@ -60,7 +63,7 @@ h1 {
 	font-family: 'Bangers', cursive;
 	font-size: 24px;
 	text-align: center;
-	color: var(--cervena);
+	color: #34435e;
 }
 
 #otazka {
@@ -86,7 +89,7 @@ h1 {
 	width: 100%;
 	height: auto;
 	border-radius: 50%;
-	border: 3px dotted var(--cervena);
+	border: 3px dotted var(--dark);
 }
 
 #moznosti {
@@ -103,14 +106,14 @@ h1 {
 #odpovedi li {
 	margin: 0 0 20px 0;
 	padding: 10px 30px;
-	background-color: var(--seda);
+	background-color: var(--title);
 	border-radius: 100px;
 	transition: all 0.2s;
 	transform: translateX(0);
 }
 
 #odpovedi li:hover {
-	background-color: var(--cervena);
+	background-color: var(--dark);
 	color: white;
 	cursor: pointer;
 	transform: translateX(-10px);
@@ -120,7 +123,7 @@ h1 {
 	margin-top: 0;
 	font-family: 'Bangers', cursive;
 	font-size: 42px;
-	color: var(--cervena);
+	color: var(--dark);
 }
 
 .vysledekText {
